@@ -14,15 +14,15 @@
 | Delete a Post | http://localhost:3000/posts/:id      |    DELETE |
 
 
-# Install Lib using in project
+# Install individual packages in project
 ```
-$ npm install --save express morgan
+$ npm install --save express morgan dotenv
 $ npm install --save-dev typescript @types/express nodemon ts-node @types/morgan mysql2 types/mysql2
 ```
 
 # How to run 
 ```
-$ git clone https://github.com/betapcode/simple-rest-api-typescript-nodejs-mysql.git
+$ git clone https://github.com/olamide226/simple-rest-api-typescript-nodejs-mysql.git
 $ cd simple-rest-api-typescript-nodejs-mysql
 $ npm install
 $ npm run dev # run for developer
