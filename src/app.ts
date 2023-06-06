@@ -28,7 +28,10 @@ export class App {
 
     routes() {
         this.app.use(indexRoutes);
-        this.app.use('/posts', postRoutes);
+        this.app.use(`/posts`, postRoutes);
+        this.app.use('*', (req, res) => {
+            res.status(404).json({message: 'Not Found'});
+        });
     }
 
     async listen() {

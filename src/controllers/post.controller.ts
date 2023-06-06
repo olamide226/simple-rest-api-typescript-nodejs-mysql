@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 
 import { connect } from '../database'
 import { Post } from '../interface/Post';
+import { log } from 'console';
 
 export async function getPosts(req: Request, res: Response): Promise<Response> {
     const conn = await connect();
@@ -11,8 +12,13 @@ export async function getPosts(req: Request, res: Response): Promise<Response> {
 
 export async function createPost(req: Request, res: Response) {
     const newPost: Post = req.body;
+    log(newPost);
     const conn = await connect();
-    await conn.query('INSERT INTO posts SET ?', [newPost]);
+    await conn.query('INSERT INTO posts SET ?', [newPost])
+    .catch(err => {
+        console.error(err);
+        res.status(500).json({message: 'Internal Server Error'});
+    });
     return res.json({
         message: 'Post Created'
     });
